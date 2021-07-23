@@ -11,5 +11,5 @@ createApp({
       this.counter++;
     }
   },
-  template: `<button type="button" v-on:click="plus">{{ counter }}</button>`
+  template: `<button type="button" @click="plus">{{ counter }}</button>`
 }).mount('#app');
