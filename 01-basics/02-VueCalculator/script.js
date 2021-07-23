@@ -3,29 +3,23 @@ import {createApp} from './vendor/vue.esm-browser.js';
 createApp({
   data() {
     return {
-      firstNum: 0,
-      secondNum: 0,
-      action: 'sum'
+      a: 0,
+      b: 0,
+      currentAction: '➕',
+      actionFunctions: {
+        '➕': (a, b) => a + b,
+        '➖': (a, b) => a - b,
+        '✖': (a, b) => a * b,
+        '➗': (a, b) => a / b
+      }
     };
   },
   computed: {
+    actions() {
+      return Object.keys(this.actionFunctions);
+    },
     result() {
-      switch (this.action) {
-        case 'sum':
-          return this.firstNum + this.secondNum;
-          break;
-        case 'subtract':
-          return this.firstNum - this.secondNum;
-          break;
-        case 'multiply':
-          return this.firstNum * this.secondNum;
-          break;
-        case 'divide':
-          return this.firstNum / this.secondNum;
-          break;
-        default:
-          throw new Error('Unexpected action');
-      }
+      return this.actionFunctions[this.currentAction](this.a, this.b);
     }
   },
 }).mount('#app');
