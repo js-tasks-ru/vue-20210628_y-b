@@ -6,7 +6,7 @@ createApp({
       a: 0,
       b: 0,
       currentAction: '➕',
-      actions: {
+      actionFunctions: {
         '➕': (a, b) => a + b,
         '➖': (a, b) => a - b,
         '✖': (a, b) => a * b,
@@ -15,8 +15,11 @@ createApp({
     };
   },
   computed: {
+    actions() {
+      return Object.keys(this.actionFunctions);
+    },
     result() {
-      return this.actions[this.currentAction](this.a, this.b);
+      return this.actionFunctions[this.currentAction](this.a, this.b);
     }
   },
 }).mount('#app');

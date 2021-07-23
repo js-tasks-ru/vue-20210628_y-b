@@ -35,9 +35,9 @@
     </div>
 
     <div class="col" style="display: flex; flex-direction: column; font-family: emoji">
-      <label v-for="(actionFunc, actionName) in actions">
-        <input type="radio" :value="actionName" v-model="currentAction"/>
-        {{ actionName }}
+      <label v-for="action in actions">
+        <input type="radio" :value="action" v-model="currentAction"/>
+        {{ action }}
       </label>
     </div>
 
