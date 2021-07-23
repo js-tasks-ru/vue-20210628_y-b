@@ -31,18 +31,18 @@
 <div id="app" class="container">
   <div class="row">
     <div class="col">
-      <input type="number" v-model.number="firstNum"/>
+      <input type="number" v-model.number="a"/>
     </div>
 
     <div class="col" style="display: flex; flex-direction: column; font-family: emoji">
-      <label><input type="radio" value="sum" v-model="action"/> ➕</label>
-      <label><input type="radio" value="subtract" v-model="action"/> ➖</label>
-      <label><input type="radio" value="multiply" v-model="action"/> ✖</label>
-      <label><input type="radio" value="divide" v-model="action"/> ➗</label>
+      <label v-for="(actionFunc, actionName) in actions">
+        <input type="radio" :value="actionName" v-model="currentAction"/>
+        {{ actionName }}
+      </label>
     </div>
 
     <div class="col">
-      <input type="number" v-model.number="secondNum"/>
+      <input type="number" v-model.number="b"/>
     </div>
 
     <div class="col">=</div>
